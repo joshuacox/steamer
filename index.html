@@ -1,69 +1,70 @@
 <!DOCTYPE html>
 <html>
-
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Steamer : Docker that contains steam, caution steam can cause severe burns!">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
-    <title>Steamer</title>
+    <title>Steamer by joshuacox</title>
   </head>
 
   <body>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/joshuacox/steamer">View on GitHub</a>
-
-          <h1 id="project_title">Steamer</h1>
-          <h2 id="project_tagline">Docker that contains steam, caution steam can cause severe burns!</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/joshuacox/steamer/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/joshuacox/steamer/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-
+    <header>
+      <div class="container">
         <h1>Steamer</h1>
+        <h2>Docker that contains steam, caution steam can cause severe burns!</h2>
 
-        <p>This is a generic docker container that will enable you to run steam servers in the cloud</p>
+        <section id="downloads">
+          <a href="https://github.com/joshuacox/steamer/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/joshuacox/steamer/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/joshuacox/steamer" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
 
-        <h3>Requirements</h3>
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a id="steamer" class="anchor" href="#steamer" aria-hidden="true"><span class="octicon octicon-link"></span></a>steamer</h1>
 
-        Docker 1.4.1+
-        Everything else runs in the container
+<p>Docker that contains steam, caution steam can cause severe burns!</p>
 
-        <h3>Usage</h3>
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
 
-        <p>First download using the above links or clone the repo directly</p>
+<p>replace steamer.txt with a custom script of your own, and replace run.sh with the server command then <code>make run</code></p>
 
-        <p>Then replace steamer.txt with a custom script of your own </p>
+<h2>
+<a id="caveats" class="anchor" href="#caveats" aria-hidden="true"><span class="octicon octicon-link"></span></a>Caveats</h2>
 
-        <p>view the dev docs to create your own <a href=https://developer.valvesoftware.com/wiki/SteamCMD#Creating_a_script>here</a></p>
+<p>Because of the Steam Guard Token. You must get into the VM, login as the steam user and incant <code>/home/steam/steamcmd/steamcmd.sh</code>,
+then at the steam prompt type <code>login $STEAM_USER $STEAM_PASSWORD</code> with the steam credentials for your dedicated server account 
+(it is recommended you make a separate account for each dedicated server you put up)</p>
 
-        <p>The example given is the same as the default steamer.txt given in the repo</p>
+<p>I’m looking for a good way to automate this process.</p>
 
-        <p>Then type <code>make run</code></p>
+<p>At this point you will have to do the dance to get the steam token.</p>
 
-        <p>now type <code>docker ps</code> you should see your container running</p>
+<p>And to make all this persistent you’ll need to -v mount at least the steam directories, but I’ve just been mounting the entire /home/steam directory so I can save maps and other things out as well YMMV</p>
 
+<p>you can see an example here that I made for octohost.io
+<a href="https://github.com/Thalhalla/armocto">https://github.com/Thalhalla/armocto</a></p>
+
+<p>saving the directory before migrating to octohost can be a tricky step.  Essentially I run <code>make run</code> on this project:
+<a href="http://thalhalla.github.io/dockarmaiii/">http://thalhalla.github.io/dockarmaiii/</a>
+and copy the home directory out at that time.  Then copy over to my octohost into the <code>/exports/armocto</code> directory</p>
+
+<p>view the dev docs here on creating a script for the steamcmd:
+<a href="https://developer.valvesoftware.com/wiki/SteamCMD#Creating_a_script">https://developer.valvesoftware.com/wiki/SteamCMD#Creating_a_script</a>
+that is the same as the default steamer.txt given here</p>
+
+<p>main website here:
+<a href="http://joshuacox.github.io/steamer/">http://joshuacox.github.io/steamer/</a></p>
       </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Steamer maintained by <a href="https://github.com/joshuacox">joshuacox</a></p>
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
-      </footer>
     </div>
 
               <script type="text/javascript">
@@ -72,11 +73,10 @@
           </script>
           <script type="text/javascript">
             try {
-              var pageTracker = _gat._getTracker("UA-2155511-3");
+              var pageTracker = _gat._getTracker("UA-69335315-1");
             pageTracker._trackPageview();
             } catch(err) {}
           </script>
-
 
   </body>
 </html>
