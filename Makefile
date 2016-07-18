@@ -13,7 +13,7 @@ run: builddocker rm HOMEDIR homedir rundocker beep
 
 install: builddocker rm HOMEDIR homedir installdocker
 
-rundocker: STEAM_USERNAME STEAM_GID STEAM_PASSWORD STEAM_GUARD_CODE HOMEDIR
+rundocker: STEAM_USERNAME STEAM_PASSWORD STEAM_GID HOMEDIR
 	$(eval TMP := $(shell mktemp -d --suffix=DOCKERTMP))
 	$(eval NAME := $(shell cat NAME))	
 	$(eval HOMEDIR := $(shell cat HOMEDIR))	
@@ -37,7 +37,7 @@ rundocker: STEAM_USERNAME STEAM_GID STEAM_PASSWORD STEAM_GUARD_CODE HOMEDIR
 	-v $(HOMEDIR)/Steam:/home/steam/Steam \
 	-t joshuacox/steamer
 
-installdocker: STEAM_USERNAME STEAM_GID STEAM_PASSWORD STEAM_GUARD_CODE HOMEDIR
+installdocker: STEAM_USERNAME STEAM_PASSWORD STEAM_GID HOMEDIR
 	$(eval TMP := $(shell mktemp -d --suffix=DOCKERTMP))
 	$(eval NAME := $(shell cat NAME))	
 	$(eval HOMEDIR := $(shell cat HOMEDIR))	
